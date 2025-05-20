@@ -2,10 +2,10 @@
   "name": "cabezafria-backend",
   "version": "1.0.0",
   "description": "API Rest para Cabeza Fria",
-  "main": "index.js",
+  "main": "index.mjs",
   "type":"module",
   "scripts": {
-    "dev": "node --watch ./index.js"
+    "dev": "node --watch ./src/index.mjs"
   },
   "keywords": [
     "express",
