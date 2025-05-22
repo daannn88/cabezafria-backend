@@ -6,6 +6,7 @@ import dbConnect from './config/mongoose.congif.mjs';           //Importamos dep
 
 //Paso 2: Ejecutamos Express
 const app = express();             //Invocación de express
+app.use(express.json());
 
 dbConnect();
 
