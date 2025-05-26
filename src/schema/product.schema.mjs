@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
     name:{
         type: String,
         trim: true,
-        required: [true, 'El nombre del producto es requerido']
+        required: [true, 'El nombre del producto es requerido']     //Obligatorio
     },
     description:{
         type: String,
@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema({
     },
     price:{
         type: Number,
-        min: [0, 'El precio del producto debe srr mayor a cero'],
+        min: [0, 'El precio del producto debe ser mayor a cero'],
         default: 0,
         trim: true
     },
@@ -50,7 +50,7 @@ const productSchema = new mongoose.Schema({
 },
 //configuración de la estructura de datos
 {
-    timestamps: true,
+    timestamps: true,           //crea dos campos 'createdAt' y 'updatedAt'x
     versionkey: false
 });
 
