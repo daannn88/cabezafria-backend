@@ -16,8 +16,8 @@ const createProduct = async (req, res)=>{
 
 const getAllProducts = async (req, res)=>{
     try{
-        const data = await productModel.find({});
-        res.json(data);
+        const inData = await productModel.find({});
+        res.json(inData);
     }
     catch(error){
         console.error(error)
@@ -25,7 +25,24 @@ const getAllProducts = async (req, res)=>{
     }
 };
 
+const getProductById = async (req, res)=>{
+    const productId = req.params.id;
+
+    try{
+        const inData = await productModel.findById(productId);
+        if(! inData){
+            return res.json({msg: 'No se pudo encontrar el producto'})
+        }
+        res.json(inData)
+    }
+    catch(error){
+        console.error(error)
+        res.json({msg:'Error: No se pudo encontrar el producto'})
+    }
+};
+
 export {
     createProduct,
-    getAllProducts
+    getAllProducts,
+    getProductById
 }
