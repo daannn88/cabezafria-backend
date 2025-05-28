@@ -41,8 +41,39 @@ const getProductById = async (req, res)=>{
     }
 };
 
+const deleteProductById = async (req, res)=>{
+    const productId = req.params.id;
+    try{
+        const inData = await productModel.findByIdAndDelete(productId);
+        if(inData == null){
+            return res.json({msg: 'El producto NO SE ENCUENTRA REGISTRADO.'})
+        }
+
+        res.json({ data: inData, mgs: 'Se elimino el producto' });
+    }
+    catch(error){
+        console.error(error)
+        res.json({msg: 'No se pudo eliminar el producto.'})
+    }
+};
+
+const updateProductById = async (req, res)=>{
+    const productId = req.params.id;
+    const inData = req.body;
+    try{
+    const data = await productModel.findByIdAndUpdate(productId, inData, {new: true});
+    res.json(data)
+    }
+    catch(error){
+        console.error(error);
+        res.json({msg: 'No se pudo actualizar el producto'});
+    }
+}
+
 export {
     createProduct,
     getAllProducts,
-    getProductById
+    getProductById,
+    deleteProductById,
+    updateProductById
 }
