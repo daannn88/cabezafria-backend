@@ -3,12 +3,10 @@ import mongoose from "mongoose";
 const reviewSchema = new mongoose.Schema({
     usuarioId: {
         type: String,
-        ref: 'Usuario',
         required: false
     },
     productoId: {
         type: String,
-        ref: 'Producto',
         required: false
     },
     calificacion: {
