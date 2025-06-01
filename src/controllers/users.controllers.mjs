@@ -1,18 +1,40 @@
-import { json } from "express";
+import bcrypt, { genSaltSync } from 'bcrypt';
+
 import usersModel from "../schemas/user.schema.mjs";
 
 const createUsers = async ( req, res ) => {
-    const imputData = req.body; // extraigo el objeto enviado
+    const inputData = req.body; // extraigo el objeto enviado
     
+    try{ 
+        const userFound =  await usersModel.findOne({
+            username: inputData.username,
+            email: inputData.email
+        });
 
-    try{ const rigisteredUsers =  await usersModel.create( imputData );
-        console.log( rigisteredUsers );  //imprimen en la consola 
-        res.status( 201 ).json( rigisteredUsers );
-} // Enviar la respuesta al cliente 
-    catch ( error ) {
-        console.error( error );
+        if(userFound){
+        return res.status(404).json({msg: 'No pudo registrarse, porque el usuario ya existe'})
+        };
+
+        const salt = bcrypt.genSaltSync();
+    
+        console.log('salt: ', salt);
+
+        const hashPassword = bcrypt.hashSync(
+            inputData.password,
+            salt
+        );
+
+        console.log('hashPassword: ', hashPassword);
+
+        inputData.password = hashPassword; 
+    
+        const data = await usersModel.create(inputData);
+        res.status(201).json(data)
+    }
+    catch(error){
+        console.error(error);
         res.status( 500 ).json({msg: 'Error: No se pudo registrar el usuario'} );
-}
+    }
 }
 
 const getAllUsers =  async ( req, res ) => {

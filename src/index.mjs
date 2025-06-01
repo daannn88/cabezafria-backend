@@ -4,14 +4,17 @@ import express from 'express';                                  //Importamos dep
 
 import users from './routes/user.routes.mjs'              //Importamos las rutas
 import dbConnect from './config/mongoose.congif.mjs';           //Importamos dependencias Mongoose
+import auth from './routes/auth.route.mjs'
 
 //Paso 2: Ejecutamos Express
 const app = express();             //Invocación de express
 
 dbConnect();
+
 app.use( express.json () );
 
 app.use( users );
+app.use(auth);
 
 
 //Paso 4: Lanzamos el servidor web usando express escuchando 
