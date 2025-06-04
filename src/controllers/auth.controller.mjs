@@ -48,6 +48,21 @@ const loginUser = async (req, res)=>{
     })
 }
 
+const reNewToken = (req, res)=>{
+    const payload = req.authUser
+
+    const jwtSecret = 'hady8adha76da8hf7'
+
+    const token = jwt.sign(
+        payload, 
+        jwtSecret,
+        {expiresIn: '1h'}
+    );
+
+    res.json({token});
+} 
+
 export{
-    loginUser
+    loginUser,
+    reNewToken
 }
