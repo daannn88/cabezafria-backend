@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import usersModel from "../schemas/user.schema.mjs";
+import { generateToken } from '../helpers/jwt.helper.mjs';
 
 const loginUser = async (req, res)=>{
     const inputData = req.body;
@@ -28,14 +28,9 @@ const loginUser = async (req, res)=>{
         role: userFound.role
     };
 
-    const jwtSecret = 'hady8adha76da8hf7'
+    const token = generateToken(payload);
 
-    const token = jwt.sign(
-        payload, 
-        jwtSecret,
-        {expiresIn: '1h'}
-    );
-
+    
     const objUser = userFound.toObject();       //convirtiendo de BJSON A JS
     delete objUser.password;
     delete objUser.createdAt;
@@ -51,13 +46,7 @@ const loginUser = async (req, res)=>{
 const reNewToken = (req, res)=>{
     const payload = req.authUser
 
-    const jwtSecret = 'hady8adha76da8hf7'
-
-    const token = jwt.sign(
-        payload, 
-        jwtSecret,
-        {expiresIn: '1h'}
-    );
+    const token = generateToken(payload)
 
     res.json({token});
 } 

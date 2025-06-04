@@ -1,7 +1,6 @@
 //const express = require('express');             //commonJS
 //Paso 1:Importamos dependecias
 import express from 'express';                                  //Importamos dependencias ESModule
-
 import users from './routes/user.routes.mjs'              //Importamos las rutas
 import dbConnect from './config/mongoose.congif.mjs';           //Importamos dependencias Mongoose
 import auth from './routes/auth.route.mjs'

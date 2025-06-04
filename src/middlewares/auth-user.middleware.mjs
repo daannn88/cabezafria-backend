@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import { verifyToken } from '../helpers/jwt.helper.mjs';
 
 const authUser = (req, res, next)=>{
     const token = req.header('X-Token')
@@ -8,7 +8,7 @@ const authUser = (req, res, next)=>{
     }
     const jwtSecret = 'hady8adha76da8hf7'
 
-    const payload = jwt.verify(token, jwtSecret);
+    const payload = verifyToken(token)
     
 
     delete payload.iat;
