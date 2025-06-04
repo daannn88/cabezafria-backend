@@ -18,7 +18,7 @@ app.use(product);                   //implementando las rutas de producto
 app.use(reviews);
 app.use(comments);
 app.use(favourite);
-app.use(users );
+app.use(users);
 app.use(auth);
 
 dbConnect();
