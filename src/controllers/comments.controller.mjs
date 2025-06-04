@@ -1,4 +1,4 @@
-import commentsModel from "../schemas/comments.schema.mjs"
+import commentsModel from "../schema/comments.schema.mjs"
 
 const createComments = async (req, res ) =>{
     

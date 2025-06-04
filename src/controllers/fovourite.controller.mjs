@@ -1,4 +1,4 @@
-import favouriteModel from "../schemas/fovourite.schema.mjs"
+import favouriteModel from "../schema/favourite.schema.mjs"
 
 const createfavourite = async ( req, res ) => {
     const inputData = req.body;
