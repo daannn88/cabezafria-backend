@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema({
     usuarioId: {
-        type: String,
-        required: false
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
     },
     productoId: {
-        type: String,
-        required: false
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'products',
     },
     calificacion: {
         type: Number,
@@ -15,14 +15,10 @@ const reviewSchema = new mongoose.Schema({
         min: 1,
         max: 5
     },
-    comentario: {
+    review: {
         type: String,
         maxlength: 1000
     },
-    fecha: {
-        type: Date,
-        default: Date.now
-    }
 },{
     timestamps: true,
     versionkey: false

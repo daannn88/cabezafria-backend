@@ -2,18 +2,12 @@ import mongoose from "mongoose";
 
 const favouriteSchema = new mongoose.Schema({
     usuarioId: {
-        type: String,
-        ref: 'Usuario',
-        required: false,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
     },
     productoId: {
-        type: String,
-        ref: 'Producto',
-        required: false,
-    },
-    agregadoEn: {
-        type: Date,
-        default: Date.now,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'products',
     },
 },{
     timestamps: true,

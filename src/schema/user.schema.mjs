@@ -1,7 +1,7 @@
 import mongoose from "mongoose"; 
 
 const usersSchema = new mongoose.Schema({ 
-    name: {
+    userName: {
         type: String,
         trim: true,
         required: [ true, 'El nombre del usuario es obligatorio' ]    //obligatorio
@@ -13,12 +13,6 @@ const usersSchema = new mongoose.Schema({
         unique: true,
         required: [ true, 'El correo del usuario es obligatorio' ],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Por favor, introduce un correo electrónico válido.']
-    },
-    //username, puede ser: un correo, # identificacion, alias */
-    username: {
-        type: String,
-        required: [ true, 'El correo del usuario es obligatorio' ],
-        
     },
     password: {
         type: String,

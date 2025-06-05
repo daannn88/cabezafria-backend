@@ -3,7 +3,7 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-    name:{
+    productName:{
         type: String,
         trim: true,
         required: [true, 'El nombre del producto es requerido']     //Obligatorio
@@ -44,6 +44,10 @@ const productSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    reviews: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'reviews'
+    }
     // owner:{
     //     //Vincular el ID al UserModels
     // }
