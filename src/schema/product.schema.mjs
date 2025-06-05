@@ -33,9 +33,9 @@ const productSchema = new mongoose.Schema({
         trim: true
     },
     category:{
-        //Vincular el ID al CategoryModels
-        type: String,
-        default: 'non-category'
+        type: mongoose.Schema.Types.ObjectId,
+        default: 'non-category',
+        ref: 'categories'
     },
     urlImage:{
         type: String,
