@@ -28,7 +28,7 @@ const usersSchema = new mongoose.Schema({
     phoneNumber: {
         type: Number,
         match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
-        default: 'Introduce el numero '
+        required: [ true, 'El numero es obligatorio' ]
     },
 
 }, {
