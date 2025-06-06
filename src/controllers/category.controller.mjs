@@ -1,4 +1,4 @@
-import categoryModel from "../schemas/category.schema.mjs";
+import categoryModel from "../schema/category.schema.mjs";
 
 const createCategory = async ( req, res ) => {
     const inputData = req.body;     // Extrae el objeto enviado

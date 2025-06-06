@@ -8,10 +8,13 @@ import reviews from './routes/reviews.route.mjs'                //Importamos las
 import comments from './routes/comments.route.mjs'              //Importamos las rutas
 import users from './routes/user.routes.mjs'                    //Importamos las rutas
 import auth from './routes/auth.route.mjs'                      //Importamos las rutas
+import category from './routes/category.route.mjs'
 import dbConnect from './config/mongoose.congif.mjs';           //Importamos dependencias Mongoose
+
 
 //Paso 2: Ejecutamos Express
 const app = express();             //Invocación de express
+const PORT = process.env.PORT ?? 3001;
 
 app.use(express.json());
 app.use(product);                   //implementando las rutas de producto
@@ -20,10 +23,11 @@ app.use(comments);
 app.use(favourite);
 app.use(users);
 app.use(auth);
+app.use(category)
 
 dbConnect();
 
 //Paso 4: Lanzamos el servidor web usando express escuchando 
-app.listen(3000, ()=>{
-    console.log('Servidor lanzado exitosamente! :)')
+app.listen(PORT, ()=>{
+    console.log(`Servidor lanzado exitosamente! :). Puerto: ${PORT}`)
 });
