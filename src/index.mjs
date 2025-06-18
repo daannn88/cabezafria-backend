@@ -2,6 +2,8 @@
 //Paso 1:Importamos dependecias
 
 import express from 'express';                                  //Importamos dependencias ESModule  
+import cors from 'cors'
+
 import favourite from './routes/favourite.router.mjs'           //Importamos las rutas
 import product from './routes/products.route.mjs';              //Importamos las rutas
 import reviews from './routes/reviews.route.mjs'                //Importamos las rutas
@@ -15,8 +17,9 @@ import dbConnect from './config/mongoose.congif.mjs';           //Importamos dep
 //Paso 2: Ejecutamos Express
 const app = express();             //Invocación de express
 const PORT = process.env.PORT ?? 3001;
-
+app.use(cors())
 app.use(express.json());
+
 app.use(product);                   //implementando las rutas de producto
 app.use(reviews);
 app.use(comments);
