@@ -5,23 +5,24 @@ import mongoose from 'mongoose';
 const categorySchema = new mongoose.Schema(
     // Define la estructura de datos del documento
     {
-        name: {
+        categoryName: {
             type: String,
             trim: true,
             unique: true,
             required: [ true, 'El nombre de la categoria es requerido' ]
         },
-        description: {
+        categoryDescription: {
             type: String,
             trim: true
         },
-        state: {
+        categoryState: {
             type: Boolean,
             default: true
         },
-        // owner: {
-            // TODO: Vincular con un Id al UserSchema
-        // }
+        categoryOwner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "users"
+        }
     },
     // Configuracion de la estructura de datos
     {

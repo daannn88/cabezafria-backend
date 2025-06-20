@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const favouriteSchema = new mongoose.Schema({
-    usuarioId: {
+    favouriteUserId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
     },
-    productoId: {
+    favouriteProductId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'products',
     },
