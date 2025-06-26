@@ -6,7 +6,7 @@ const usersSchema = new mongoose.Schema({
         trim: true,
         required: [ true, 'El nombre del usuario es obligatorio' ]    //obligatorio
     },
-    email: {
+    userEmail: {
         type: String,
         trim: true,
         lowercase: true,
@@ -14,18 +14,18 @@ const usersSchema = new mongoose.Schema({
         required: [ true, 'El correo del usuario es obligatorio' ],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Por favor, introduce un correo electrónico válido.']
     },
-    password: {
+    userPassword: {
         type: String,
         trim: true,
         min: [8,' La contraseña debe tener al menos 8 caracteres'],
         max: [20,' La contraseña debe tener máximo 20 caracteres'],
         required: [ true, 'La contraseña es obligatoria' ]
     },
-    role: {
+    userRole: {
         type: String,
         default: 'cliente'
     },
-    phoneNumber: {
+    userPhoneNumber: {
         type: Number,
         match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
         required: [ true, 'El numero es obligatorio' ]

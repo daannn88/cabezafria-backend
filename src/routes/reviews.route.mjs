@@ -10,5 +10,4 @@ router.get('/api/reviews/:id', authUser, getReviewById)
 router.patch('/api/reviews/:id', authUser, updateReviewById)
 router.delete('/api/reviews/:id', authUser, deleteReviewById)
 
-
 export default router;
