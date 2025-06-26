@@ -24,9 +24,11 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     productColor:{
-        type: String
+        type: String,
+        trim: true,
+        required:true
     },
-    productoStock:{
+    productStock:{
         type: Number,
         min: [1, 'El stock minimo para registrar es 1'],
         default: 1,
