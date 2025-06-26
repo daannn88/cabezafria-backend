@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken'
 
-
 const generateToken = (payload)=>{
     const token = jwt.sign(
         payload, 
@@ -16,7 +15,8 @@ const verifyToken = (token)=>{
         token, 
         process.env.jwtSecret,
     );
-        return payload
+    
+    return payload
 }
 
 

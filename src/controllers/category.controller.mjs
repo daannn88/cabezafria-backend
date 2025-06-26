@@ -1,4 +1,4 @@
-import categoryModel from "../schemas/category.schema.mjs";
+import categoryModel from "../schema/category.schema.mjs";
 
 const createCategory = async ( req, res ) => {
     const inputData = req.body;     // Extrae el objeto enviado
@@ -9,7 +9,7 @@ const createCategory = async ( req, res ) => {
 
         // Verifica si la categoria YA existe y lanza el respectivo mensaje al cliente
         if( categoryFound ) {
-            return res.json({ msg: 'La categoria ya se encuentra registrada' });
+            return res.json({ msg: 'La categoria ya se encuentra registrada.' });
         }
 
         // Registra la categoria
@@ -20,7 +20,7 @@ const createCategory = async ( req, res ) => {
     } 
     catch (error) { // Catch: Captura el error producido por la excepcion
         console.error( error );
-        res.status( 500 ).json({ msg: 'Error: No se pudo registrar la categoria' });
+        res.status( 500 ).json({ msg: 'Error: No se pudo registrar la categoria.' });
     }
 
 }
@@ -33,7 +33,7 @@ const getAllCategories = async ( req, res ) => {
     } 
     catch ( error ) {
         console.error( error );
-        res.status( 500 ).json({ msg: 'Error: No se pudo obtener el listado de categorias' });
+        res.status( 500 ).json({ msg: 'Error: No se pudo obtener el listado de categorias.' });
     }
 
 }
@@ -47,14 +47,14 @@ const getCategoryById = async ( req, res ) => {
 
         // Verifica si la categoria No existe y lanza el respectivo mensaje al cliente
         if( ! data ) {
-            return res.status( 404 ).json({ msg: 'La categoria no se encuentra registrada' });
+            return res.status( 404 ).json({ msg: 'La categoria no se encuentra registrada.' });
         }
 
         res.status( 200 ).json( data );
     } 
     catch ( error ) {
         console.error( error );
-        res.json( 500 ).json({ msg: 'Error: No se pudo encontrar la categoria' });
+        res.json( 500 ).json({ msg: 'Error: No se pudo encontrar la categoria.' });
     }
     
 }
@@ -68,14 +68,14 @@ const removeCategoryById = async ( req, res ) => {
 
         // Verifica si la categoria No existe y lanza el respectivo mensaje al cliente
         if( ! data ) {
-            return res.json({ msg: 'La categoria no se encuentra registrada' });
+            return res.json({ msg: 'La categoria no se encuentra registrada.' });
         }
 
         res.json( data );
     } 
     catch ( error ) {
         console.error( error );
-        res.json({ msg: 'Error: No pudo eliminar la categoria' });
+        res.json({ msg: 'Error: No se pudo eliminar la categoria.' });
     }
 
 }
@@ -92,7 +92,7 @@ const updateCategoryById = async ( req, res ) => {
     } 
     catch ( error ) {
         console.error( error );
-        res.json({ msg: 'Error: No se pudo actualizar la categoria' });
+        res.json({ msg: 'Error: No se pudo actualizar la categoria.' });
     }
 
 }

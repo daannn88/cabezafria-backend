@@ -10,7 +10,7 @@ const loginUser = async (req, res)=>{
     });
     
     if(! userFound){
-        return res.status(404).json({msg: 'El usario no existe, por favor registrese.'})
+        return res.status(404).json({msg: 'El usuario no existe, por favor registrese.'})
     }
     
     const isAuthenticated = bcrypt.compareSync(
@@ -19,7 +19,7 @@ const loginUser = async (req, res)=>{
     )
 
     if(! isAuthenticated){
-        return res.status(404).json({msg:'contrasenia invalida'})
+        return res.status(404).json({msg:'contraseña invalida.'})
     }
 
     const payload = {

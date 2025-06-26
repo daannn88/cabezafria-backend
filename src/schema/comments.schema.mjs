@@ -2,15 +2,23 @@ import mongoose from "mongoose";
 
 //define la estructura de datos del documento
 const commentsSchema = new mongoose.Schema({
-    usuarioId: {
+    commentUserId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
     },
-    productoId: {
+    anonymousUser:{
+        type: String,
+        required: true
+    },
+    anonymousEmail:{
+        type: String,
+        required: true
+    },
+    CommentProductId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'products',
     },
-    comentario: {
+    content: {
         type: String,
         maxlength: 1000
     },

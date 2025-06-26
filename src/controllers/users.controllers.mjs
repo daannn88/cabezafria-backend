@@ -1,4 +1,4 @@
-import bcrypt, { genSaltSync } from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 import usersModel from "../schema/user.schema.mjs";
 

@@ -6,7 +6,7 @@ const usersSchema = new mongoose.Schema({
         trim: true,
         required: [ true, 'El nombre del usuario es obligatorio' ]    //obligatorio
     },
-    email: {
+    userEmail: {
         type: String,
         trim: true,
         lowercase: true,
@@ -14,13 +14,13 @@ const usersSchema = new mongoose.Schema({
         required: [ true, 'El correo del usuario es obligatorio' ],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Por favor, introduce un correo electrónico válido.']
     },
-    password: {
+    userPassword: {
         type: String,
         trim: true,
         minlength: [8,' La contraseña debe tener al menos 8 caracteres'],
         required: [ true, 'La contraseña es obligatoria' ]
     },
-    role: {
+    userRole: {
         type: String,
         required: [true, 'El rol del usuario es obligatorio.'],
         enum: {
@@ -29,8 +29,8 @@ const usersSchema = new mongoose.Schema({
         },
         default: 'registered' // Cambiado a 'registrado' para mayor coherencia con los roles definidos
     },
-    phoneNumber: {
-        type: String,
+    userPhoneNumber: {
+        type: Number,
         match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
         required: [ true, 'El numero es obligatorio' ]
     },
