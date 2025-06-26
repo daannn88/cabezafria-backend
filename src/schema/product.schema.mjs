@@ -34,7 +34,6 @@ const productSchema = new mongoose.Schema({
     },
     category:{
         type: mongoose.Schema.Types.ObjectId,
-        default: 'non-category',
         ref: 'categories'
     },
     urlImage:{

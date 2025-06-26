@@ -1,7 +1,9 @@
 //const express = require('express');             //commonJS
 //Paso 1:Importamos dependecias
 
-import express from 'express';                                  //Importamos dependencias ESModule  
+import express from 'express';                                  //Importamos dependencias ESModule 
+import cors from 'cors';
+
 import favourite from './routes/favourite.router.mjs'           //Importamos las rutas
 import product from './routes/products.route.mjs';              //Importamos las rutas
 import reviews from './routes/reviews.route.mjs'                //Importamos las rutas
@@ -11,8 +13,11 @@ import auth from './routes/auth.route.mjs'                      //Importamos las
 import dbConnect from './config/mongoose.congif.mjs';           //Importamos dependencias Mongoose
 
 //Paso 2: Ejecutamos Express
-const app = express();             //Invocación de express
 
+const app = express();             //Invocación de express
+const PORT =  process.env.PORT ?? 3001;
+
+app.use(cors())
 app.use(express.json());
 app.use(product);                   //implementando las rutas de producto
 app.use(reviews);
@@ -24,6 +29,6 @@ app.use(auth);
 dbConnect();
 
 //Paso 4: Lanzamos el servidor web usando express escuchando 
-app.listen(3000, ()=>{
-    console.log('Servidor lanzado exitosamente! :)')
+app.listen(PORT, ()=>{
+    console.log(`Servidor lanzado exitosamente! :) ,${ PORT }`);
 });
