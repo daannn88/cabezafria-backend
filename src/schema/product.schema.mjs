@@ -3,7 +3,7 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-    name:{
+    productName:{
         type: String,
         trim: true,
         required: [true, 'El nombre del producto es requerido']     //Obligatorio
@@ -18,10 +18,14 @@ const productSchema = new mongoose.Schema({
         default: 0,
         trim: true
     },
-    productSize:{  
+    productType:{
         type: String,
         trim: true,
         required: true
+    },
+    productSize:{  
+        type: String,
+        trim: true,
     },
     productColor:{
         type: String,
