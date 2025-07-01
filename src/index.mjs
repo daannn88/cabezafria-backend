@@ -6,7 +6,6 @@ import express from 'express';                                  //Importamos dep
 import cors from 'cors'
 
 import favourite from './routes/favourite.route.mjs'           //Importamos las rutas
-
 import product from './routes/products.route.mjs';              //Importamos las rutas
 import reviews from './routes/reviews.route.mjs'                //Importamos las rutas
 import comments from './routes/comments.route.mjs'              //Importamos las rutas
