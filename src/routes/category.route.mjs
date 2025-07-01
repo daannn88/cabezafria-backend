@@ -5,7 +5,7 @@ import { authUser } from '../middlewares/auth-user.middleware.mjs';
 const router = express.Router();    // Invocando el Router de Express
 
 // Defnir las rutas para la entidad Product.
-router.post( '/api/categories',  createCategory );
+router.post( '/api/categories', authUser, createCategory );
 router.get( '/api/categories', getAllCategories );
 
 // :id (Paramentrizar la ruta: Creamos una especie de variable)

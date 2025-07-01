@@ -18,10 +18,14 @@ const productSchema = new mongoose.Schema({
         default: 0,
         trim: true
     },
-    productSize:{  
+    productType:{
         type: String,
         trim: true,
         required: true
+    },
+    productSize:{  
+        type: String,
+        trim: true,
     },
     productColor:{
         type: String,
