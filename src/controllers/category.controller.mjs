@@ -11,7 +11,6 @@ const createCategory = async ( req, res ) => {
         if( categoryFound ) {
             return res.json({ msg: 'La categoria ya se encuentra registrada.' });
         }
-
         // Registra la categoria
         const registeredCategory = await categoryModel.create( inputData );
 
