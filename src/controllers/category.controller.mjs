@@ -5,7 +5,7 @@ const createCategory = async ( req, res ) => {
 
     // try: Controla las excepciones de la consulta a la base datos
     try {
-        const categoryFound = await categoryModel.findOne({ name: inputData.name });
+        const categoryFound = await categoryModel.findOne({ categoryName: inputData.categoryName });
 
         // Verifica si la categoria YA existe y lanza el respectivo mensaje al cliente
         if( categoryFound ) {
