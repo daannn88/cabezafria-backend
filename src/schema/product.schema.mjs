@@ -19,10 +19,13 @@ const productSchema = new mongoose.Schema({
         trim: true
     },
     productSize:{  
-        type: Number,
-        min: [1, 'El tamaño del producto debe ser mayor a cero'],
-        default: 1,
+        type: String,
+        trim: true,
         required: true
+    },
+    productSize:{  
+        type: String,
+        trim: true,
     },
     productColor:{
         type: String,
