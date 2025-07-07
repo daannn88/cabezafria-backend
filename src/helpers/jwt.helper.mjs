@@ -14,6 +14,7 @@ const verifyToken = (token)=>{
     const payload = jwt.verify(
         token, 
         process.env.jwtSecret,
+
     );
     
     return payload

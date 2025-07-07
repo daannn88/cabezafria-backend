@@ -31,7 +31,7 @@ const usersSchema = new mongoose.Schema({
     },
     userPhoneNumber: {
         type: Number,
-        match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
+        // match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
         required: [ true, 'El numero es obligatorio' ]
     },
 
