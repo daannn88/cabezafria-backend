@@ -7,8 +7,8 @@ const createUsers = async ( req, res ) => {
     
     try{ 
         const userFound =  await usersModel.findOne({
-            username: inputData.username,
-            email: inputData.email
+            userName: inputData.userName,
+            userEmail: inputData.userEmail
         });
 
         if(userFound){
@@ -20,13 +20,13 @@ const createUsers = async ( req, res ) => {
         console.log('salt: ', salt);
 
         const hashPassword = bcrypt.hashSync(
-            inputData.password,
+            inputData.userPassword,
             salt
         );
 
         console.log('hashPassword: ', hashPassword);
 
-        inputData.password = hashPassword; 
+        inputData.userPassword = hashPassword; 
     
         const data = await usersModel.create(inputData);
         res.status(201).json(data)

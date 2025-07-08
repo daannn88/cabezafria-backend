@@ -6,7 +6,7 @@ const loginUser = async (req, res)=>{
     const inputData = req.body;
 
     const userFound = await usersModel.findOne({
-        email: inputData.email
+        userEmail: inputData.userEmail
     });
     
     if(! userFound){
@@ -14,8 +14,8 @@ const loginUser = async (req, res)=>{
     }
     
     const isAuthenticated = bcrypt.compareSync(
-        inputData.password,
-        userFound.password
+        inputData.userPassword,
+        userFound.userPassword
     )
 
     if(! isAuthenticated){
@@ -23,16 +23,16 @@ const loginUser = async (req, res)=>{
     }
 
     const payload = {
-        name: userFound.name,
-        email: userFound.email,
-        role: userFound.role
+        userName: userFound.userName,
+        userEmail: userFound.userEmail,
+        userRole: userFound.userRole
     };
 
     const token = generateToken(payload);
 
     
     const objUser = userFound.toObject();       //convirtiendo de BJSON A JS
-    delete objUser.password;
+    delete objUser.userPassword;
     delete objUser.createdAt;
     delete objUser.updatedAt;
 

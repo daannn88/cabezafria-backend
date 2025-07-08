@@ -3,7 +3,7 @@ import { createUsers, getAllUsers, getUsersById, removeUsersById, updateUsersByI
 import { authUser } from '../middlewares/auth-user.middleware.mjs';
 const router = express.Router();   // invocando el router de express
 
-router.post( '/api/users', authUser, createUsers );
+router.post( '/api/users', createUsers );
 router.get( '/api/users', authUser, getAllUsers );
 router.get( '/api/users/:id', authUser, getUsersById );  
 router.delete( '/api/users/:id', authUser, removeUsersById )
