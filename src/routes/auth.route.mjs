@@ -9,4 +9,4 @@ router.post('/api/auth/register', createUsers);
 router.post('/api/auth/login', loginUser );
 router.get('/api/auth/re-new-token', authUser, reNewToken )
 
-export default router
+export default router   

@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
-const DB_URI = process.env.DB_URI ?? 'mongodb://127.0.0.1:27017/db-cabezafria';
+const DB_URI = process.env.DB_URI ?? 'mongodb://localhost:27017/db-cabezafria'
 
 //Define una funcion asincrona para definir la configuracion del ODM Mongoose para usar MongoDB
 async function dbConnect(){
+    
     try{
         await mongoose.connect(DB_URI, {});
 

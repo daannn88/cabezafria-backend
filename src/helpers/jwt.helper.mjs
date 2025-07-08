@@ -13,7 +13,8 @@ const generateToken = (payload)=>{
 const verifyToken = (token)=>{
     const payload = jwt.verify(
         token, 
-        process.env.jwtSecret
+        process.env.jwtSecret,
+
     );
     
     return payload

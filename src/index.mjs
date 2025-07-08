@@ -1,6 +1,7 @@
 //const express = require('express');             //commonJS
 //Paso 1:Importamos dependecias
 
+           //Importamos las rutas
 import express from 'express';                                  //Importamos dependencias ESModule  
 import cors from 'cors'
 
@@ -15,8 +16,10 @@ import dbConnect from './config/mongoose.congif.mjs';           //Importamos dep
 
 
 //Paso 2: Ejecutamos Express
+
 const app = express();             //Invocación de express
 const PORT = process.env.PORT ?? 3001;
+
 app.use(cors())
 app.use(express.json());
 
@@ -32,5 +35,5 @@ dbConnect();
 
 //Paso 4: Lanzamos el servidor web usando express escuchando 
 app.listen(PORT, ()=>{
-    console.log(`Servidor lanzado exitosamente! :). Puerto: ${PORT}`)
+    console.log(`Servidor lanzado exitosamente! :) ,${ PORT }`);
 });

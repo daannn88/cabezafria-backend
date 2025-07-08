@@ -8,7 +8,7 @@ const createUsers = async ( req, res ) => {
     try{ 
         const userFound =  await usersModel.findOne({
             userName: inputData.userName,
-            userEmail: inputData.userEmail
+            userEmail: inputData.userEmail,
         });
 
         if(userFound){

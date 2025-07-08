@@ -17,18 +17,22 @@ const usersSchema = new mongoose.Schema({
     userPassword: {
         type: String,
         trim: true,
-        min: [8,' La contraseña debe tener al menos 8 caracteres'],
-        max: [20,' La contraseña debe tener máximo 20 caracteres'],
+        minlength: [8,' La contraseña debe tener al menos 8 caracteres'],
         required: [ true, 'La contraseña es obligatoria' ]
     },
     userRole: {
         type: String,
-        default: 'cliente'
+        required: [true, 'El rol del usuario es obligatorio.'],
+        enum: {
+            values: [ 'admin', 'colaborator', 'registered'],
+            message: 'El rol {VALUE} no es válido. Los roles permitidos son: super administrador, administrador, colaborador, usuario registrado.'
+        },
+        default: 'registered' // Cambiado a 'registrado' para mayor coherencia con los roles definidos
     },
     userPhoneNumber: {
         type: Number,
-        match: [/^\d{10}$/,'El numero debe tener 10 dígitos ']
-        // required: [ true, 'El numero es obligatorio' ]
+        // match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
+        required: [ true, 'El numero es obligatorio' ]
     },
 
 }, {
