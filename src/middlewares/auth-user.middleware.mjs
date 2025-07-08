@@ -6,7 +6,6 @@ const authUser = (req, res, next)=>{
     if(! token){
         return res.json({msg : 'Error: No se pudo obtener el token'})
     }
-    const jwtSecret = 'hady8adha76da8hf7'
 
     const payload = verifyToken(token)
     
