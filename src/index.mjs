@@ -4,7 +4,6 @@
            //Importamos las rutas
 import express from 'express';                                  //Importamos dependencias ESModule  
 import cors from 'cors'
-
 import favourite from './routes/favourite.route.mjs'           //Importamos las rutas
 import product from './routes/products.route.mjs';              //Importamos las rutas
 import reviews from './routes/reviews.route.mjs'                //Importamos las rutas
@@ -13,6 +12,7 @@ import users from './routes/user.routes.mjs'                    //Importamos las
 import auth from './routes/auth.route.mjs'                      //Importamos las rutas
 import category from './routes/category.route.mjs'
 import dbConnect from './config/mongoose.congif.mjs';           //Importamos dependencias Mongoose
+import createDefaultAdmins from './config/admin-default.mjs';
 
 
 //Paso 2: Ejecutamos Express
@@ -32,6 +32,7 @@ app.use(auth);
 app.use(category)
 
 dbConnect();
+createDefaultAdmins();
 
 //Paso 4: Lanzamos el servidor web usando express escuchando 
 app.listen(PORT, ()=>{

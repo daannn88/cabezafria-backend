@@ -23,7 +23,7 @@ const usersSchema = new mongoose.Schema({
     userRole: {
         type: String,
         required: [true, 'El rol del usuario es obligatorio.'],
-        enum: {
+        enum:{
             values: [ 'admin', 'colaborator', 'registered'],
             message: 'El rol {VALUE} no es válido. Los roles permitidos son: super administrador, administrador, colaborador, usuario registrado.'
         },
@@ -33,7 +33,7 @@ const usersSchema = new mongoose.Schema({
         type: Number,
         // match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
         required: [ true, 'El numero es obligatorio' ]
-    },
+    }
 
 }, {
     timestamps: true, // Agrega las propiedades createdAt
