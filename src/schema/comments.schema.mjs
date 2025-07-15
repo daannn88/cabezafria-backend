@@ -6,17 +6,11 @@ const commentsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
     },
-    anonymousUser:{
+    commentUserName:{
         type: String,
-        required: true
     },
-    anonymousEmail:{
+    commentUserEmail:{
         type: String,
-        required: true
-    },
-    CommentProductId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'products',
     },
     content: {
         type: String,

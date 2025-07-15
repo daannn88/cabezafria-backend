@@ -1,23 +1,22 @@
 import commentsModel from '../schema/comments.schema.mjs';
+import usersModel from '../schema/user.schema.mjs';
+
 
 const addComment = async (req, res) => {
 
-    const { productId } = req.params;
-    const { inputData } = req.body;
+    const inputData = req.body;
 
-    if (!text) {
-        return res.status(400).json({ message: 'El texto del comentario es obligatorio.' });
-    }
     try {
-        const newComment = new Comment({
-            inputData,
-            product: productId,
-            user: userName
+        const newComment = new  commentsModel({
+            commentUserId: inputData.commentUserId, // Si el usuario está autenticado, se guarda su ID, si no, se deja como null
+            commentUserName: inputData.commentUserName || 'Anonimo', // Si el usuario está autenticado, se guarda su nombre, si no, se usa 'Anónimo'
+            commentUserEmail: inputData.commentUserEmail || 'Anonimo',
+            content: inputData.content
         });
 
         await newComment.save();
 
-        res.status(201).json({ message: 'Comentario agregado con éxito.', comment: newComment });
+        res.status(201).json({ message: 'Comentario agregado con éxito.', content: newComment });
 
     } catch (error) {
         console.error(error);
@@ -55,24 +54,5 @@ const deleteComment = async (req, res) => {
     }
 };
 
-const getCommentsByProduct = async (req, res) => {
-    const { productId } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(productId)) {
-        return res.status(400).json({ message: 'ID del producto no válido.' });
-    }
-
-    try {
-        const comments = await Comment.find({ product: productId })
-            .populate('user', 'name') // Traemos el nombre del usuario que comentó
-            .sort({ createdAt: -1 }); // Ordenamos del más nuevo al más viejo
-
-        res.status(200).json({ comments });
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error del servidor al obtener los comentarios.' });
-    }
-};
-export { addComment, deleteComment, getCommentsByProduct };
+export { addComment, deleteComment };
 
