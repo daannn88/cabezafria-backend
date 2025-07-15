@@ -24,10 +24,10 @@ const usersSchema = new mongoose.Schema({
         type: String,
         required: [true, 'El rol del usuario es obligatorio.'],
         enum:{
-            values: [ 'admin', 'cliente'],
-            message: 'El rol {VALUE} no es válido. Los roles permitidos son: super administrador, administrador, colaborador, usuario registrado.'
+            values: [ 'Administrador', 'Cliente'],
+            message: 'El rol {VALUE} no es válido. Los roles permitidos son: Administrador o Cliente.'
         },
-        default: 'cliente' // Cambiado a 'registrado' para mayor coherencia con los roles definidos
+        default: 'Cliente' // Cambiado a 'registrado' para mayor coherencia con los roles definidos
     },
     userPhoneNumber: {
         type: Number,
