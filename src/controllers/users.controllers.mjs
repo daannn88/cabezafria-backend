@@ -69,7 +69,7 @@ const getUsersById =  async (req, res ) => {
 const removeUsersById =  async ( req, res) => {
     const UsersId = req.params.id;
     try {
-        const data = await usersModel.findById( UsersId );
+        const data = await usersModel.findByIdAndDelete( UsersId );
         if ( ! data ){
                 return res.json({ msg: 'El usuario no se encuentra registrado '})
             }
