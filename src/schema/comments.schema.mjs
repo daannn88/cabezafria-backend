@@ -8,15 +8,9 @@ const commentsSchema = new mongoose.Schema({
     },
     anonymousUser:{
         type: String,
-        required: true
     },
     anonymousEmail:{
         type: String,
-        required: true
-    },
-    CommentProductId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'products',
     },
     content: {
         type: String,

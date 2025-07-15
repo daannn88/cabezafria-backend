@@ -5,13 +5,9 @@ const addComment = async (req, res) => {
     const { productId } = req.params;
     const { inputData } = req.body;
 
-    if (!text) {
-        return res.status(400).json({ message: 'El texto del comentario es obligatorio.' });
-    }
     try {
         const newComment = new Comment({
             inputData,
-            product: productId,
             user: userName
         });
 
