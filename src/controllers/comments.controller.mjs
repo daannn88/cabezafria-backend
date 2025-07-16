@@ -1,5 +1,5 @@
 import commentsModel from '../schema/comments.schema.mjs';
-import usersModel from '../schema/user.schema.mjs';
+
 
 
 const addComment = async (req, res) => {

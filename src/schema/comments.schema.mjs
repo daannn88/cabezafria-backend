@@ -16,7 +16,11 @@ const commentsSchema = new mongoose.Schema({
         type: String,
         maxlength: 1000
     },
-}, {
+    typeOfComment:{
+        type: String,
+        enum: ['peticiones', 'quejas', 'reclamos'],
+    },},
+    {
     timestamps: true,
     versionKey: false
 });
