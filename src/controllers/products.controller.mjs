@@ -8,6 +8,7 @@ const createProduct = async (req, res)=>{
     console.log(registeredProduct);        //Imprime en la consola
     res.status(201).json(registeredProduct);      //Enviando la respuesta del cliente
     }
+    
     catch(error){
         console.error(error);
         res.status(500).json({msg: 'Error: No se pudo registrar el producto'});

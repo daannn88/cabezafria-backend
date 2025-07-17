@@ -2,8 +2,6 @@ import { encryptedPassword } from "../helpers/bcrypt.helper.mjs";
 import usersModel from "../schema/user.schema.mjs";
 import adminUser from "./admin-data.mjs";
 
-
-
 const createDefaultAdmins = async () => {
     
     try {

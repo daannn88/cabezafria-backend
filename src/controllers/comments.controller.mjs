@@ -37,7 +37,7 @@ const deleteComment = async (req, res) => {
         }
 
         // Verificar si el usuario es el autor del comentario o un administrador
-        if (comment.user.toString() !== userId && !role.includes('admin')) {
+        if (comment.user.toString() !== userId && !role.includes('Administrador')) {
             return res.status(403).json({ message: 'No tienes permiso para eliminar este comentario.' });
         }
         
