@@ -6,17 +6,21 @@ const commentsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
     },
-    anonymousUser:{
+    commentUserName:{
         type: String,
     },
-    anonymousEmail:{
+    commentUserEmail:{
         type: String,
     },
     content: {
         type: String,
         maxlength: 1000
     },
-}, {
+    typeOfComment:{
+        type: String,
+        enum: ['peticiones', 'quejas', 'reclamos'],
+    },},
+    {
     timestamps: true,
     versionKey: false
 });
