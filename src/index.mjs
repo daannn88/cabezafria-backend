@@ -13,6 +13,7 @@ import auth from './routes/auth.route.mjs'                      //Importamos las
 import category from './routes/category.route.mjs'
 import dbConnect from './config/mongoose.congif.mjs';           //Importamos dependencias Mongoose
 import createDefaultAdmins from './config/admin-default.mjs';
+import tests from './routes/test.mjs'
 
 
 //Paso 2: Ejecutamos Express
@@ -30,6 +31,7 @@ app.use(favourite);
 app.use(users);
 app.use(auth);
 app.use(category)
+app.use(tests);
 
 dbConnect();
 createDefaultAdmins();
