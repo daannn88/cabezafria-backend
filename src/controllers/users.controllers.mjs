@@ -86,7 +86,7 @@ const updateUsersById =  async ( req, res) => {
     const UsersId = req.params.id;
     try {
         const data = await usersModel.findByIdAndUpdate( UsersId, inpudtData );
-        
+
         res.json( data )
     }
     catch ( error ) {

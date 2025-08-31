@@ -1,73 +1,111 @@
+// import { sanitizeJSON } from "../helpers/sanitize.helper.mjs";
 import productModel from "../schema/product.schema.mjs";
 
-const createProduct = async (req, res)=>{
+const createProduct = async (req, res) => {
     const inData = req.body;//extraigo el objeto enviado
 
-    try{const registeredProduct = await productModel.create(inData);
+    try {
+        const registeredProduct = await productModel.create(inData);
 
-    console.log(registeredProduct);        //Imprime en la consola
-    res.status(201).json(registeredProduct);      //Enviando la respuesta del cliente
+        console.log(registeredProduct);        //Imprime en la consola
+        res.status(201).json(registeredProduct);      //Enviando la respuesta del cliente
     }
-    
-    catch(error){
+
+    catch (error) {
         console.error(error);
-        res.status(500).json({msg: 'Error: No se pudo registrar el producto'});
+        res.status(500).json({ msg: 'Error: No se pudo registrar el producto' });
     }
 }
 
-const getAllProducts = async (req, res)=>{
-    try{
+const getProductsByFilter = async (req, res) => {
+    const filter = req.body;   // { categoryName: '59FIFTY (Fitted)' } o { productName: 'Gucci' }
+
+    try {
+        let inData = [];
+
+        if (filter.productCategory) {
+            inData = await productModel.find({ productCategory: filter.productCategory });
+        }
+        else if (filter.productName) {
+            inData = await productModel.find({ productName: filter.productName });
+        }
+        else {
+            return res.status(400).json({ error: "Filtro no válido" });
+        }
+
+        res.json(inData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Error: No se pudo obtener el listado de productos" });
+    }
+};
+
+const getAllProducts = async (req, res) => {
+    try {
         const inData = await productModel.find({}).populate(['productCategory']);
         res.json(inData);
     }
-    catch(error){
+    catch (error) {
         console.error(error)
-        res.json({msg: 'Error: No se pudo obtener el listado de productos'})
+        res.json({ msg: 'Error: No se pudo obtener el listado de productos' })
     }
 };
 
-const getProductById = async (req, res)=>{
+const getAllProductsByBrand = async (req, res) => {
+    const inputData = req.body;
+    
+    try {
+        const inData = await productModel.find({productName: inputData.productName, productState: true});
+        res.json(inData);
+    }
+    catch (error) {
+        console.error(error)
+        res.json({ msg: 'Error: No se pudo obtener el listado de productos' })
+    }
+};
+
+const getProductById = async (req, res) => {
     const productId = req.params.id;
 
-    try{
+    try {
         const inData = await productModel.findById(productId).populate('productCategory');
-        if(! inData){
-            return res.json({msg: 'No se pudo encontrar el producto'})
+        if (!inData) {
+            return res.json({ msg: 'No se pudo encontrar el producto' })
         }
         res.json(inData)
     }
-    catch(error){
+    catch (error) {
         console.error(error)
-        res.json({msg:'Error: No se pudo encontrar el producto'})
+        res.json({ msg: 'Error: No se pudo encontrar el producto' })
     }
 };
 
-const deleteProductById = async (req, res)=>{
+const deleteProductById = async (req, res) => {
     const productId = req.params.id;
-    try{
+    try {
         const inData = await productModel.findByIdAndDelete(productId);
-        if(inData == null){
-            return res.json({msg: 'El producto NO SE ENCUENTRA REGISTRADO.'})
+        if (inData == null) {
+            return res.json({ msg: 'El producto NO SE ENCUENTRA REGISTRADO.' })
         }
 
         res.json({ data: inData, mgs: 'Se elimino el producto' });
     }
-    catch(error){
+    catch (error) {
         console.error(error)
-        res.json({msg: 'No se pudo eliminar el producto.'})
+        res.json({ msg: 'No se pudo eliminar el producto.' })
     }
 };
 
-const updateProductById = async (req, res)=>{
+const updateProductById = async (req, res) => {
     const productId = req.params.id;
     const inData = req.body;
-    try{
-    const data = await productModel.findByIdAndUpdate(productId, inData, {new: true});
-    res.json(data)
+    try {
+        const data = await productModel.findByIdAndUpdate(productId, inData, { new: true });
+        res.json(data)
     }
-    catch(error){
+    catch (error) {
         console.error(error);
-        res.json({msg: 'No se pudo actualizar el producto'});
+        res.json({ msg: 'No se pudo actualizar el producto' });
     }
 }
 
@@ -76,5 +114,7 @@ export {
     getAllProducts,
     getProductById,
     deleteProductById,
-    updateProductById
+    updateProductById,
+    getProductsByFilter,
+    getAllProductsByBrand
 }

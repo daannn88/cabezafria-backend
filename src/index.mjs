@@ -1,9 +1,10 @@
 //const express = require('express');             //commonJS
 //Paso 1:Importamos dependecias
 
-           //Importamos las rutas
+//Importamos las rutas
 import express from 'express';                                  //Importamos dependencias ESModule  
 import cors from 'cors'
+
 import favourite from './routes/favourite.route.mjs'           //Importamos las rutas
 import product from './routes/products.route.mjs';              //Importamos las rutas
 import reviews from './routes/reviews.route.mjs'                //Importamos las rutas
@@ -13,7 +14,7 @@ import auth from './routes/auth.route.mjs'                      //Importamos las
 import category from './routes/category.route.mjs'
 import dbConnect from './config/mongoose.congif.mjs';           //Importamos dependencias Mongoose
 import createDefaultAdmins from './config/admin-default.mjs';
-import tests from './routes/test.mjs'
+import tests from './routes/testing-backend.mjs'
 
 
 //Paso 2: Ejecutamos Express

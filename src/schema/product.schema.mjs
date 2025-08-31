@@ -18,6 +18,11 @@ const productSchema = new mongoose.Schema({
         default: 0,
         trim: true
     },
+    productBrand:{
+        type: String,
+        required: true,
+        trim: true
+    },
     productType:{  
         type: String,
         trim: true,
