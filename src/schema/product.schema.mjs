@@ -61,6 +61,10 @@ const productSchema = new mongoose.Schema({
     productOwner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "users"
+        },
+    productFavoriteCounter: {
+            type: Number,
+            default: 0
         }
 },
 //configuración de la estructura de datos

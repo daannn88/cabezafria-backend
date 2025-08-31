@@ -17,29 +17,6 @@ const createProduct = async (req, res) => {
     }
 }
 
-const getProductsByFilter = async (req, res) => {
-    const filter = req.body;   // { categoryName: '59FIFTY (Fitted)' } o { productName: 'Gucci' }
-
-    try {
-        let inData = [];
-
-        if (filter.productCategory) {
-            inData = await productModel.find({ productCategory: filter.productCategory });
-        }
-        else if (filter.productName) {
-            inData = await productModel.find({ productName: filter.productName });
-        }
-        else {
-            return res.status(400).json({ error: "Filtro no válido" });
-        }
-
-        res.json(inData);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ msg: "Error: No se pudo obtener el listado de productos" });
-    }
-};
-
 const getAllProducts = async (req, res) => {
     try {
         const inData = await productModel.find({}).populate(['productCategory']);
@@ -55,7 +32,7 @@ const getAllProductsByBrand = async (req, res) => {
     const inputData = req.body;
     
     try {
-        const inData = await productModel.find({productName: inputData.productName, productState: true});
+        const inData = await productModel.find({productBrand: inputData.productBrand, productState: true});
         res.json(inData);
     }
     catch (error) {
@@ -115,6 +92,5 @@ export {
     getProductById,
     deleteProductById,
     updateProductById,
-    getProductsByFilter,
     getAllProductsByBrand
 }

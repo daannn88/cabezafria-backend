@@ -34,10 +34,10 @@ const usersSchema = new mongoose.Schema({
         // match: [/^\d{10}$/,'El numero debe tener 10 dígitos '],
         required: [ true, 'El numero es obligatorio' ]
     },
-    userFavourites:{
+    userFavorites:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'products'
-    }
+    }]
 }, {
     timestamps: true, // Agrega las propiedades createdAt
     versionKey: false // contador __v de modificaciones del schema
