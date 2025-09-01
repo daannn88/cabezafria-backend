@@ -30,9 +30,9 @@ const getAllProducts = async (req, res) => {
 
 const getAllProductsByBrand = async (req, res) => {
     const inputData = req.body;
-    
+
     try {
-        const inData = await productModel.find({productBrand: inputData.productBrand, productState: true});
+        const inData = await productModel.find({ productBrand: inputData.productBrand, productState: true });
         res.json(inData);
     }
     catch (error) {
