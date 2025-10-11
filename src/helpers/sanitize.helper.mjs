@@ -20,11 +20,3 @@ export function sanitizeJSON(obj) {
 
   return JSON.stringify(obj, replacer, 2);
 }
-
-// // Ejemplo:
-// const data = {
-//   error: 'El termino de busqueda {"pedrito":"59FIFTY (Fitted)"} no existe'
-// };
-
-// console.log(sanitizeJSON(data));
- 

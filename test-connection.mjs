@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-const uri = "mongodb+srv://cabezaFria:CF1234*++@cluster0.f6csmsh.mongodb.net/db-cabezafria";
+const uri = process.env.DB_URI;
 
 
 async function testConnection() {
     try {
         console.log("⏳ Intentando conectar a MongoDB Atlas...");
         await mongoose.connect(uri, {
-            serverSelectionTimeoutMS: 10000 // tiempo de espera opcional
+            serverSelectionTimeoutMS: 500 // tiempo de espera opcional
         });
         console.log("✅ Conexión exitosa a MongoDB Atlas");
     } catch (err) {
